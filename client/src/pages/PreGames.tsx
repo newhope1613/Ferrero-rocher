@@ -25,15 +25,17 @@ function PreGame() {
                 <span>PLAY</span>
                 <span>up to three times a day</span>
                 <img src="./imgForGame3.jpg" alt="Nothing" style={{ borderRadius: "100%" }} />
-                <span>See the result</span>
+                <span>See the result</span> 
             </div>
             <h1 className="center">Please enter your email</h1>
             <h3 className="center">Only one step before you play</h3>
             <div className="preGameInput">
                 <form onSubmit={handleSubmit(onSubmit)}>
-                    <p style={{ marginBottom: "10px" }}>*Email</p>
-                    <input {...register("email", { required: "Нужно согласиться с условиями" })} placeholder="Email" />
-                    <button type="submit" className="usualButton" style={{ marginLeft: "15px" }}>Continue</button>
+                    <div style={{ display: "flex", flexDirection: "column", gap: "10px" }}>
+                        <label htmlFor="email">*Email</label>
+                        <input id="email" {...register("email", { required: "Нужно согласиться с условиями" })} placeholder="Email" />
+                        <button type="submit" className="usualButton">Continue</button>
+                    </div>
                 </form>
             </div>
             <div className="center" style={{ padding: "20px" }}>

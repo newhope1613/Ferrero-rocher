@@ -4,6 +4,54 @@
     box-sizing: border-box;
 }
 
+.wrappedBanner {
+    background: url("/christmas.jpg") no-repeat center center;
+    background-size: cover;
+    height: 100vh;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 20px
+}
+
+.bannerText {
+    font-family: 'Times New Roman', Times, serif;
+    font-style: italic;
+    font-weight: 400;
+    font-size: 50px;
+}
+
+.bannerButton {
+    padding: 12px 24px;
+    border: 1px solid white;
+    border-radius: 12px;
+    background: linear-gradient(135deg, #6F4E37, #6F4E37);
+    color: white;
+    font-size: 24px;
+    font-weight: 600;
+    cursor: pointer;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
+    width: 200px;
+    height: 50px;
+    align-self: center;
+}
+
+.bannerButton:hover {
+    transform: translateY(-4px);
+}
+
+.bannerP {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+    font-size: 32px;
+    color: black;
+    font-style: italic;
+}
+
 #root {
     min-height: 100vh;
     display: flex;
@@ -88,6 +136,10 @@ header {
     align-self: center;
 }
 
+.usualButton:hover {
+    transform: translateY(-4px) scale(1.1);
+}
+
 .winButton {
     color: white;
     padding: 12px 24px;
@@ -100,6 +152,10 @@ header {
     box-shadow: 0 15px 15px rgba(0, 0, 0, 0.08);
     width: fit-content;
     align-self: center;
+}
+
+.winButton:hover {
+    transform: translateY(-4px) scale(1.1);
 }
 
 .center {
@@ -138,8 +194,52 @@ header {
     color: #6F4E37;
 }
 
+.container input {
+    width: 200px;
+    max-width: 100%;
+    padding: 12px 16px;
+    border-radius: 20px;
+    border: 1px solid #ccc;
+    font-size: 16px;
+    background-color: #ebe0e0;
+    color: #6F4E37;
+}
+
 .candy {
+    width: 40px;
+    height: 40px;
+    margin: 5px;
     border-radius: 100%;
-    width: 70px;
-    margin: 10px;
+    cursor: pointer;
+    transition: transform 0.2s ease;
+}
+
+.candy:hover {
+    transform: translateY(-4px);
+}
+
+.promocode {
+    border: 20px solid #6F4E37;
+    background-color: #6F4E37;
+    color: white;
+    border-radius: 10%;
+}
+
+.container {
+    width: 250px;
+    border: 1px solid #eee;
+    padding: 20px;
+    border-radius: 12px;
+    background: #fff;
+    box-shadow:
+        0 2px 4px rgba(0, 0, 0, 0.08),
+        0 8px 20px rgba(0, 0, 0, 0.1);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.container:hover {
+    transform: translateY(-4px);
+    box-shadow:
+        0 4px 8px rgba(0, 0, 0, 0.1),
+        0 12px 24px rgba(0, 0, 0, 0.15);
 }

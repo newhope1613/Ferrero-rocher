@@ -1,23 +1,23 @@
+import { useLocation } from 'react-router-dom'
 import './App.css'
 import AppRouter from './AppRouter'
 import Footer from './Components/Footer'
+import Header from './Components/Header'
+
 
 function App() {
 
+  const location = useLocation()
+  const hideLayout = location.pathname === "/"
+
+
   return (
     <div style={{ display: "flex", flexDirection: "column", minHeight: "100vh" }}>
-      <header style={{
-        width: "100%",
-        backgroundImage: "url('/banner.png')",
-        backgroundSize: "cover",
-        backgroundPosition: "center",
-        height: "300px"
-      }}>
-      </header>
-      <div style={{ flexGrow: "1" }}>
+      {!hideLayout && <Header />}
+      <div style={{ flexGrow: "1", marginBottom: "20px" }}>
         <AppRouter />
       </div>
-      <Footer />
+      {!hideLayout && <Footer />}
     </div>
   )
 }

@@ -1,4 +1,5 @@
-export const MAIN_PAGE = "/";
+export const BANNER = "/"
+export const MAIN_PAGE = "/main";
 export const PRE_GAME = "/preGame";
 export const GAME = "/game"
 export const CHECK_REGISTRATION = "/registration"
