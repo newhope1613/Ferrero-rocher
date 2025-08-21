@@ -5,9 +5,9 @@ const User = sequelize.define("users", {
     id: { type: DataTypes.INTEGER, primaryKey: true, autoIncrement: true },
     email: { type: DataTypes.STRING, unique: true, allowNull: true, validate: { isEmail: true } },
     phone: { type: DataTypes.STRING, unique: true, allowNull: true },
-    password: { type: DataType.STRING, allowNull: false },
+    password: { type: DataTypes.STRING, allowNull: true },
     address: { type: DataTypes.STRING },
-    name: { type: DataTypes.STRING }
+    name: { type: DataTypes.STRING, allowNull: true }
 })
 
 const Prize = sequelize.define("prize", {
