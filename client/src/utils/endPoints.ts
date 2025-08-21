@@ -11,3 +11,6 @@ export const AGAIN = "/again"
 //Confirmations
 export const CONFIRMATIONS = "/confirmations" 
 
+
+
+export const API_URL = "http://localhost:3000/api/"

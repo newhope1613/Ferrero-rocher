@@ -14,7 +14,7 @@ function App() {
   return (
     <div style={{ display: "flex", flexDirection: "column", minHeight: "100vh" }}>
       {!hideLayout && <Header />}
-      <div style={{ flexGrow: "1", marginBottom: "20px" }}>
+      <div style={{ flexGrow: "1" }}>
         <AppRouter />
       </div>
       {!hideLayout && <Footer />}

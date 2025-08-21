@@ -1,6 +1,6 @@
 function Again() {
     return (
-      <div className="center">
+      <div className="center gamePage" >
         <h1>We are sorry <br /> you didn`t win today</h1>
         <div style={{marginTop: "30px"}}>
             <h2>But why not try again tomorrow? <br /> Amazing prizes await you </h2>
@@ -16,7 +16,7 @@ function Again() {
                 }}
                 />
         </div>
-        <button>Invite others to play</button>
+        <button className="usualButton">Invite others to play</button>
       </div>
     )
   }

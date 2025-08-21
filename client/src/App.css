@@ -93,6 +93,9 @@ body {
 .gamePage {
     justify-content: center;
     align-items: center;
+    background: url("./goldChristmasBackground.jpg");
+    min-height: 100vh;
+    color: white;
 }
 
 .emptyPage {

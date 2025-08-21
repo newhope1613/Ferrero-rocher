@@ -42,12 +42,12 @@ function PreGame() {
     ]
 
     return (
-        <div className="gamePage">
+        <div className="gamePage" >
             <div className="center">
                 <h1>Select one ferrero rocher</h1>
                 <h2>for a chance to win</h2>
             </div>
-            <div className="christmas-tree">
+            <div >
                 {treeRows.map((row, rowIndex) => (
                     <div key={rowIndex} className="tree-row" style={{
                         display: 'flex',
