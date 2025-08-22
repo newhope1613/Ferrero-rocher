@@ -19,36 +19,37 @@ function PreGame() {
     formState: { errors },
   } = useForm<FormData>();
 
-  const onSubmit = async (data: FormData) => {
+  const onRegister = async (data: FormData) => {
     const { email, password } = data;
-    if (data.action === "registration") {
-      try {
-        const register = await api.post("/registration", {
-          email,
-          password,
-        });
-        console.log(register);
+    try {
+      const register = await api.post("users/registration", {
+        email,
+        password,
+      });
+      console.log(register);
 
-        const { token } = register.data;
-        localStorage.setItem("user", token);
-        navigate(GAME);
-      } catch (e) {
-        console.error(e);
-      }
+      const { token } = register.data;
+      localStorage.setItem("user", token);
+      navigate(GAME);
+      alert("Вы прошли регистрацию");
+    } catch (e) {
+      console.error(e);
     }
-    if (data.action === "login") {
-      try {
-        const login = await api.post("/login", {
-          email,
-          password,
-        });
-        console.log(login);
-        const { token } = login.data;
-        localStorage.setItem("user", token);
-        navigate(GAME);
-      } catch (e) {
-        console.error(e);
-      }
+  };
+
+  const onLogin = async (data: FormData) => {
+    const { email, password } = data;
+    try {
+      const login = await api.post("users/login", {
+        email,
+        password,
+      });
+      console.log(login);
+      const { token } = login.data;
+      localStorage.setItem("user", token);
+      navigate(GAME);
+    } catch (e) {
+      console.error(e);
     }
   };
 
@@ -80,7 +81,7 @@ function PreGame() {
       <h1 className="center">Please registration to play a game</h1>
       <h3 className="center">Only one step before you play</h3>
       <div className="preGameInput">
-        <form onSubmit={handleSubmit(onSubmit)}>
+        <form>
           <div
             style={{
               display: "flex",
@@ -105,50 +106,50 @@ function PreGame() {
               {...register("password", { required: true })}
               placeholder="Password"
             />
-            {errors.email && <span>*field email is required</span>}
+            {errors.password && <span>*field password is required</span>}
             <div style={{ display: "flex", gap: "10px" }}>
               <button
-                type="submit"
+                type="button"
                 className="usualButton"
-                name="action"
-                value="registration"
+                onClick={handleSubmit(onRegister)}
               >
                 Registration
               </button>
               <button
-                type="submit"
+                type="button"
                 className="usualButton"
-                name="action"
-                value="login"
+                onClick={handleSubmit(onLogin)}
               >
                 Login
               </button>
             </div>
           </div>
-          <div
-            style={{
-              display: "flex",
-              flexDirection: "column",
-              justifyContent: "center",
-            }}
-          >
-            <label>
+          <div className="checkboxContainer">
+            <label className="checkboxWrapper">
               <input
                 type="checkbox"
+                className="customCheckbox"
                 {...register("agreeTerms", { required: true })}
               />
-              <span>I have read terms & conditions</span>
+              <span className="checkboxLabel">
+                I have read terms & conditions
+              </span>
             </label>
-            {errors.agreeTerms && <span>*you must accept the terms</span>}
+            {errors.agreeTerms && (
+              <span className="errorText">*you must accept the terms</span>
+            )}
 
-            <label>
+            <label className="checkboxWrapper">
               <input
                 type="checkbox"
+                className="customCheckbox"
                 {...register("agreePrivacy", { required: true })}
               />
-              <span>I have read privacy policy</span>
+              <span className="checkboxLabel">I have read privacy policy</span>
             </label>
-            {errors.agreePrivacy && <span>*you must accept the policy</span>}
+            {errors.agreePrivacy && (
+              <span className="errorText">*you must accept the policy</span>
+            )}
           </div>
         </form>
         <p style={{ marginBottom: "15px" }}>*Required field</p>

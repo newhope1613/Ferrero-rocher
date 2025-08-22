@@ -1,22 +1,24 @@
-import { useNavigate } from "react-router-dom"
-import { MAIN_PAGE } from "../../utils/endPoints"
+import { useNavigate } from "react-router-dom";
+import { END } from "../../utils/endPoints";
+import { useEffect } from "react";
 
 function Digitial() {
-  const navigate = useNavigate()
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    setTimeout(() => {
+      navigate(END);
+    }, 2000);
+  });
 
   return (
     <div className="center">
       <div>
         <h1>CONGRATULATIONS, YOU WON THE PRIZE!</h1>
-        <h2>Lorem ipsum dolor sit amet.</h2>
-        <h3>Here is your prize</h3>
+        <h2>Promocode will be send to your phone</h2>
       </div>
-      <div style={{ marginTop: "100px" }}>
-        <span className="promocode">Promocode</span>
-      </div>
-      <button className="winButton" style={{ marginTop: "100px" }} onClick={() => navigate(MAIN_PAGE)}>Go to main</button>
     </div>
-  )
+  );
 }
 
-export default Digitial
+export default Digitial;

@@ -13,6 +13,7 @@ import {
     AGAIN,
     CONFIRMATIONS,
     BANNER,
+    END,
 } from "./utils/endPoints";
 import Prize from "./pages/resultGame/Prize";
 import Digitial from "./pages/resultGame/Digitial";
@@ -20,6 +21,7 @@ import Empty from "./pages/resultGame/Empty";
 import Again from "./pages/resultGame/Again";
 import Confirm from "./pages/resultGame/Confirm";
 import Banner from "./pages/Banner";
+import End from "./pages/End";
 
 export const routes = [
     {
@@ -64,5 +66,9 @@ export const game = [
     {
         path: CONFIRMATIONS,
         Component: Confirm,
+    },
+    {
+        path: END,
+        Component: End,
     },
 ];

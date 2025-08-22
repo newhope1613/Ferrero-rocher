@@ -1,5 +1,7 @@
+import bcrypt from "bcrypt";
+import jwt from "jsonwebtoken";
 import models from "../models.js";
-const { User } = models;
+const { User, Game } = models;
 
 const generateJWT = (id, email) => {
   return jwt.sign({ id, email }, process.env.JWT_SECRET, {
@@ -12,7 +14,6 @@ class UserController {
     try {
       let { email, password } = req.body;
       email = email?.trim();
-      phone = phone?.trim();
 
       if (!email) {
         return res.status(400).json("Поле email обязательное");
@@ -28,8 +29,9 @@ class UserController {
           .json({ message: "Такой пользователь уже существует" });
       }
 
-      const hashPassword = bcrypt.hash(password, 7);
-      const user = User.create({ email, password: hashPassword });
+      const hashPassword = await bcrypt.hash(password, 7);
+      const user = await User.create({ email, password: hashPassword });
+      await Game.create({ user_id: user.id });
       const token = generateJWT(user.id, user.email);
       return res.status(200).json({ token });
     } catch (e) {

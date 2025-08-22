@@ -1,8 +1,10 @@
 import { Router } from "express";
-import userRoute from "./userRoute.js"
+import user from "./userRoute.js";
+import game from "./gameRoute.js";
 
-const routes = Router()
+const routes = Router();
 
-routes.use("/users", userRoute)
+routes.use("/users", user);
+routes.use("/game", game);
 
-export default routes
+export default routes;
