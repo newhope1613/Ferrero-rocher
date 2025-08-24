@@ -44,7 +44,6 @@ function PreGame() {
         email,
         password,
       });
-      console.log(login);
       const { token } = login.data;
       localStorage.setItem("user", token);
       navigate(GAME);

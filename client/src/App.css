@@ -597,7 +597,6 @@ header {
 
   .preGameSpan {
     font-size: 26px;
-    flex-direction: row;
     justify-content: space-around;
     gap: 50px;
   }

@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { jwtDecode } from "jwt-decode";
 import "../App.css";
 import { useNavigate } from "react-router-dom";
-import { DIGITIAL, EMPTY, PRIZE } from "../utils/endPoints";
+import { AGAIN, DIGITIAL, EMPTY, PRIZE } from "../utils/endPoints";
 import api from "../http/api";
 
 type CandyType = "empty" | "prize" | "digitial";
@@ -22,15 +22,25 @@ function PreGame() {
       .sort((a, b) => a.sort - b.sort)
       .map(({ item }) => item);
 
+    setCandies(snuffled);
     const token = localStorage.getItem("user");
     if (token) {
       const decoded = jwtDecode<{ id: number; email: string }>(token);
-      console.log(decoded.email);
       setEmail(decoded.email);
     }
-    console.log(Date.now());
+  }, []);
 
-    setCandies(snuffled);
+  useEffect(() => {
+    const fetch = async () => {
+      const status = await api.post("game/status");
+      const play = await api.post("game/play");
+      console.log(status);
+      console.log(play);
+      if (!status) {
+        navigate(AGAIN);
+      }
+    };
+    fetch();
   }, []);
 
   const digitialPrize = async (email: string) => {
